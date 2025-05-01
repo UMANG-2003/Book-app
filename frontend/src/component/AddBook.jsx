@@ -18,7 +18,7 @@ function AddBook() {
     e.preventDefault();
 
     try {
-      const response = await fetch("http://localhost:3000/api/books", {
+      const response = await fetch("https://book-app-backend-ucc5.onrender.com", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
