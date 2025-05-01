@@ -6,7 +6,7 @@ function Books() {
   const [data, setData] = useState(null);
   const books = async () => {
       try {
-        const response = await axios.get("http://localhost:3000/api/books");
+        const response = await axios.get("https://book-app-backend-ucc5.onrender.com");
         console.log(response.data);
         setData(response.data)
       } catch (error) {
