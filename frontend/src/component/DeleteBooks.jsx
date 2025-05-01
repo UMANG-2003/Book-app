@@ -4,10 +4,9 @@ import axios from 'axios';
 function DeleteBooks() {
   const [data, setData] = useState([]);
 
- 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/books");
+      const response = await axios.get("https://book-app-backend-ucc5.onrender.com/api/books");
       console.log("Fetched books:", response.data);
       setData(response.data);
     } catch (error) {
@@ -19,18 +18,16 @@ function DeleteBooks() {
     fetchBooks();
   }, []);
 
-  
   const deleteBook = async (id) => {
-    console.log("Attempting to delete book with ID:", id); 
+    console.log("Attempting to delete book with ID:", id);
     try {
-      const response = await axios.delete(`http://localhost:3000/api/books/${id}`);
+      const response = await axios.delete(`https://book-app-backend-ucc5.onrender.com/api/books/${id}`);
       console.log("Deleted:", response.data);
       setData(data.filter((book) => book._id !== id));
     } catch (error) {
       console.error("Error deleting book:", error);
     }
   };
-  
 
   return (
     <>
