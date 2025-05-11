@@ -41,7 +41,7 @@ function Navbar() {
           <li><Link to="/delete-book">Delete Book</Link></li>
         </ul>
 
-        <div className="max-md:hidden text-white">user</div>
+        <div className="max-md:hidden text-white">Admin</div>
         <div className="md:hidden">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
