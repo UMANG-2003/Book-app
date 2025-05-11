@@ -8,7 +8,7 @@ function Home() {
 
   const fetchBooks = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/books");
+      const response = await axios.get("https://book-app-backend-ucc5.onrender.com/api/books");
       console.log("Fetched books:", response.data);
       setData(response.data);
       setFilteredBooks(response.data);

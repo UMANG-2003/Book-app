@@ -8,7 +8,7 @@ function UpdateBooks() {
 
   const books = async () => {
     try {
-      const response = await axios.get("http://localhost:3000/api/books");
+      const response = await axios.get("https://book-app-backend-ucc5.onrender.com/api/books");
       console.log(response.data);
       setData(response.data);
     } catch (error) {
@@ -18,7 +18,7 @@ function UpdateBooks() {
 
   const handleUpdate = async (id) => {
     try {
-      await axios.put(`http://localhost:3000/api/books/${id}`, editedBook);
+      await axios.put(`https://book-app-backend-ucc5.onrender.com/api/books/${id}`, editedBook);
       setEditMode(null);
       books();
     } catch (error) {
