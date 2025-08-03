@@ -58,21 +58,21 @@ function UpdateBooks() {
                       value={editedBook.title}
                       onChange={(e) => setEditedBook({ ...editedBook, title: e.target.value })}
                       placeholder="Title"
-                      className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      className="px-4 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                     <input
                       type="text"
                       value={editedBook.author}
                       onChange={(e) => setEditedBook({ ...editedBook, author: e.target.value })}
                       placeholder="Author"
-                      className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      className="px-4 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
                     <input
                       type="text"
                       value={editedBook.Image}
                       onChange={(e) => setEditedBook({ ...editedBook, Image: e.target.value })}
                       placeholder="Image URL"
-                      className="px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+                      className="px-4 py-2 border text-black border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
                     />
 
                     <button
