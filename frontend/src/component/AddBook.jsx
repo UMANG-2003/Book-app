@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import Footer from "./Footer";
 function AddBook() {
   const [formData, setFormData] = useState({
     title: "",
@@ -34,7 +34,7 @@ function AddBook() {
     setFormData({ title: "", Image: "", author: "" });
   };
 
-  return (
+  return <>
     <div className="min-h-screen bg-gray-100 px-4 py-10">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">📚 Add a New Book</h1>
 
@@ -68,7 +68,8 @@ function AddBook() {
         </button>
       </form>
     </div>
-  );
+    <Footer></Footer>
+  </>
 }
 
 export default AddBook;

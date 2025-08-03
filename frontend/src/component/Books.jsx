@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import Loader from './Loader'; // Optional: for showing loading state
+import Loader from './Loader'; 
+import Footer from "./Footer";
 
 function Books() {
   const [data, setData] = useState(null);
@@ -21,7 +22,7 @@ function Books() {
     fetchBooks();
   }, []);
 
-  return (
+  return <>
     <div className="min-h-screen bg-gray-100 py-10 px-4">
       <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">📚 Book Collection</h1>
 
@@ -51,7 +52,8 @@ function Books() {
         </div>
       )}
     </div>
-  );
+    <Footer />
+  </>
 }
 
 export default Books;

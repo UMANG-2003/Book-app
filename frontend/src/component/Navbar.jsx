@@ -34,7 +34,7 @@ function Navbar() {
             alt="Logo"
             className="w-10 h-10 object-cover rounded-lg"
           />
-          <h1 className="text-white font-bold text-xl">Book Store</h1>
+          <h1 className="text-white font-bold text-xl">BookVerse</h1>
         </div>
 
        

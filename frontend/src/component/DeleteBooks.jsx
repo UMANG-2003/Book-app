@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from './Loader';
+import Footer from "./Footer";
 function DeleteBooks() {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -33,7 +34,7 @@ function DeleteBooks() {
     }
   };
 
-  return (
+  return <>
     <div className="min-h-screen bg-gray-100 text-white px-4 py-10">
       <h1 className="text-3xl text-center font-bold mb-10 text-gray-900">🗑️ Delete Books</h1>
 
@@ -70,7 +71,8 @@ function DeleteBooks() {
         </div>
       )}
     </div>
-  );
+    <Footer></Footer>
+  </>
 }
 
 export default DeleteBooks;

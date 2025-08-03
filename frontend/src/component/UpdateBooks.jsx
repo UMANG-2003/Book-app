@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import Loader from './Loader';
+import Footer from "./Footer";
 function UpdateBooks() {
   const [data, setData] = useState(null);
   const [editMode, setEditMode] = useState(null);
@@ -36,7 +37,7 @@ function UpdateBooks() {
     fetchBooks();
   }, []);
 
-  return (
+  return <>
     <div className="min-h-screen bg-gray-100 px-4 py-10">
       <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">✏️ Update Books</h1>
 
@@ -117,7 +118,8 @@ function UpdateBooks() {
         </div>
       )}
     </div>
-  );
+    <Footer></Footer>
+  </>
 }
 
 export default UpdateBooks;
