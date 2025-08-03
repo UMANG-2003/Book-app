@@ -1,36 +1,56 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Loader from './Loader'; // Optional: for showing loading state
 
 function Books() {
   const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(true);
 
-  const books = async () => {
+  const fetchBooks = async () => {
     try {
       const response = await axios.get("https://book-app-backend-ucc5.onrender.com/api/books");
-      console.log(response.data);
       setData(response.data);
     } catch (error) {
       console.error("Error fetching books:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
   useEffect(() => {
-    books();
+    fetchBooks();
   }, []);
 
   return (
-    <>
-      <h1 className="text-center text-3xl font-bold mt-10">Books</h1>
-      <div className='flex justify-center items-center flex-wrap gap-10 mt-10 bg-gray-800 w-[90%] mx-auto p-10 rounded-4xl'>
-        {data && data.map((book, index) => (
-          <div key={index} className='bg-gray-600 w-[200px] h-[280px] flex flex-col justify-center items-center gap-2 rounded-4xl p-3'>
-            <img src={book.Image} alt={book.title} className="w-32 h-32 rounded-xl object-cover" />
-            <h3 className='font-bold text-center'>Title: {book.title}</h3>
-            <p className='font-bold text-center'>Author: {book.author}</p>
-          </div>
-        ))}
-      </div>
-    </>
+    <div className="min-h-screen bg-gray-100 py-10 px-4">
+      <h1 className="text-4xl font-bold text-center text-gray-800 mb-10">📚 Book Collection</h1>
+
+      {loading ? (
+        <Loader />
+      ) : (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 max-w-7xl mx-auto">
+          {data && data.length > 0 ? (
+            data.map((book, index) => (
+              <div
+                key={index}
+                className="bg-white shadow-md rounded-3xl p-5 flex flex-col items-center hover:shadow-xl transition duration-300"
+              >
+                <img
+                  src={book.Image}
+                  alt={book.title}
+                  onError={(e) => (e.target.src = "https://via.placeholder.com/150")}
+                  className="w-32 h-32 object-cover rounded-xl mb-4"
+                />
+                <h3 className="text-lg font-bold text-center text-gray-700">{book.title}</h3>
+                <p className="text-sm text-gray-600 text-center mt-1">by {book.author}</p>
+              </div>
+            ))
+          ) : (
+            <p className="text-center col-span-full text-gray-500">No books available.</p>
+          )}
+        </div>
+      )}
+    </div>
   );
 }
 

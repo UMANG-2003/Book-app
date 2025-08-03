@@ -16,13 +16,10 @@ function AddBook() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
     try {
       const response = await fetch("https://book-app-backend-ucc5.onrender.com/api/books", {
         method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       });
 
@@ -34,70 +31,40 @@ function AddBook() {
       alert("Failed to add book!");
     }
 
-    setFormData({
-      title: "",
-      Image: "",
-      author: "",
-    });
+    setFormData({ title: "", Image: "", author: "" });
   };
 
   return (
-    <div className="">
-      <h1 className="text-center text-3xl font-bold mt-10">Add Book</h1>
+    <div className="min-h-screen bg-gray-100 px-4 py-10">
+      <h1 className="text-3xl font-bold text-center text-gray-800 mb-8">📚 Add a New Book</h1>
+
       <form
         onSubmit={handleSubmit}
-        className="flex flex-col gap-5 bg-white w-[58%] max-md:w-[90%] h-fit text-black mx-auto my-10 p-10 max-md:px-4 max-md:py-10 rounded-4xl"
+        className="max-w-2xl mx-auto bg-white shadow-xl rounded-3xl p-8 space-y-6"
       >
-        <div className="flex justify-between items-center w-[90%] mx-auto">
-          <label htmlFor="title" className="text-xl font-bold">
-            Title :
-          </label>
-          <input
-            type="text"
-            name="title"
-            value={formData.title}
-            onChange={handleChange}
-            placeholder="add title"
-            className="bg-gray-300 px-4 py-2 rounded-4xl max-md:w-[70%] w-[80%]"
-            required
-          />
-        </div>
-
-        <div className="flex justify-between items-center w-[90%] mx-auto">
-          <label htmlFor="Image" className="text-xl font-bold">
-            Image :
-          </label>
-          <input
-            type="text"
-            name="Image"
-            value={formData.Image}
-            onChange={handleChange}
-            placeholder="add image"
-            className="bg-gray-300 px-4 py-2 rounded-4xl max-md:w-[70%] w-[80%]"
-            required
-          />
-        </div>
-
-        <div className="flex justify-between items-center w-[90%] mx-auto">
-          <label htmlFor="author" className="text-xl font-bold">
-            Author :
-          </label>
-          <input
-            type="text"
-            name="author"
-            value={formData.author}
-            onChange={handleChange}
-            placeholder="add author"
-            className="bg-gray-300 px-4 py-2 rounded-4xl max-md:w-[70%] w-[80%]"
-            required
-          />
-        </div>
+        {["title", "Image", "author"].map((field) => (
+          <div key={field} className="flex flex-col gap-2">
+            <label htmlFor={field} className="text-gray-700 font-semibold capitalize">
+              {field}:
+            </label>
+            <input
+              type="text"
+              name={field}
+              id={field}
+              value={formData[field]}
+              onChange={handleChange}
+              placeholder={`Enter ${field}`}
+              required
+              className="bg-gray-100 border border-gray-300 rounded-xl px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
+            />
+          </div>
+        ))}
 
         <button
           type="submit"
-          className="text-white bg-gradient-to-r from-blue-500 via-blue-600 to-blue-700 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-blue-300 dark:focus:ring-blue-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 cursor-pointer"
+          className="w-full bg-gradient-to-r from-purple-500 via-indigo-500 to-blue-500 text-white font-semibold py-3 rounded-xl hover:opacity-90 transition-all"
         >
-          Submit
+          Add Book
         </button>
       </form>
     </div>

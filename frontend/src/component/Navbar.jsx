@@ -6,7 +6,6 @@ function Navbar() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const sidebarRef = useRef(null);
 
-
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (sidebarRef.current && !sidebarRef.current.contains(event.target)) {
@@ -27,31 +26,65 @@ function Navbar() {
 
   return (
     <>
-      <div className="w-full bg-gray-900 h-16 shadow-lg shadow-gray-700 px-3 flex justify-between items-center">
-        <div className="flex items-center p-1.5 w-fit">
-          <img src="/logo.png" alt="Logo" className="w-10 rounded-lg m-1" />
-          <p className="text-xl font-bold mx-2 text-white">Book Store</p>
+      <header className="w-full bg-gradient-to-r from-purple-900 via-indigo-900 to-gray-900 h-16 shadow-md px-4 flex justify-between items-center sticky top-0 z-50">
+        {/* Logo and Brand */}
+        <div className="flex items-center gap-3">
+          <img
+            src="/logo.png"
+            alt="Logo"
+            className="w-10 h-10 object-cover rounded-lg"
+          />
+          <h1 className="text-white font-bold text-xl">Book Store</h1>
         </div>
 
-        <ul className="flex gap-8 font-bold cursor-pointer mr-10 max-md:hidden text-white">
-          <li><Link to="/">Home</Link></li>
-          <li><Link to="/books">Books</Link></li>
-          <li><Link to="/add-book">Add Books</Link></li>
-          <li><Link to="/update-book">Update Book</Link></li>
-          <li><Link to="/delete-book">Delete Book</Link></li>
-        </ul>
+       
+        <nav className="hidden md:flex gap-6 text-white font-medium">
+          <Link
+            to="/"
+            className="hover:text-purple-300 transition duration-200"
+          >
+            Home
+          </Link>
+          <Link
+            to="/books"
+            className="hover:text-purple-300 transition duration-200"
+          >
+            Books
+          </Link>
+          <Link
+            to="/add-book"
+            className="hover:text-purple-300 transition duration-200"
+          >
+            Add Book
+          </Link>
+          <Link
+            to="/update-book"
+            className="hover:text-purple-300 transition duration-200"
+          >
+            Update Book
+          </Link>
+          <Link
+            to="/delete-book"
+            className="hover:text-purple-300 transition duration-200"
+          >
+            Delete Book
+          </Link>
+        </nav>
 
-        <div className="max-md:hidden text-white">Admin</div>
+      
+        <div className="hidden md:block text-white font-semibold">Admin</div>
+
         <div className="md:hidden">
           <button
             onClick={() => setSidebarOpen(!sidebarOpen)}
-            className="bg-gray-800 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition duration-300 ease-in-out"
+            className="text-white text-2xl focus:outline-none hover:text-purple-300 transition"
           >
             ☰
           </button>
         </div>
-      </div>
+      </header>
 
+     
       <Sidebar isOpen={sidebarOpen} sidebarRef={sidebarRef} />
     </>
   );
