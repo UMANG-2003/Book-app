@@ -4,3 +4,8 @@ body{
   color: #fff;
 }
 
+.bookbg{
+  background-image: url("/book bg.jpg");
+  background-repeat: no-repeat;
+  background-size: contain;
+}

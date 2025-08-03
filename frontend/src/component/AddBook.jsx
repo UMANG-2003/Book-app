@@ -53,7 +53,9 @@ function AddBook() {
               id={field}
               value={formData[field]}
               onChange={handleChange}
-              placeholder={`Enter ${field}`}
+             placeholder={`Enter ${(field !== "Image") ? field : field + " URL"}`}
+
+
               required
               className="bg-gray-100 border border-gray-300 rounded-xl px-4 py-2 text-black focus:outline-none focus:ring-2 focus:ring-blue-400"
             />
